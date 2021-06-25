@@ -9,9 +9,9 @@
 
 #include "Configuration.h"
 
-#define V3   // SapphireType = {V2,V3} Choose between V2(2Endstop),V3(1 Endstop, Flipped Screen)  
+#define V2   // SapphireType = {V2,V3} Choose between V2(2Endstop),V3(1 Endstop, Flipped Screen)  
 #define Stock   // BoardName = {Stock}
-#define Inductive   // ABLType = {Manual, Inductive, BlTouch}
+#define BlTouch   // ABLType = {Manual, Inductive, BlTouch}
 #define Marlin // UIType {Marlin, ColourUI}
 
 
