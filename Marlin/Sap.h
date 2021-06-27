@@ -18,6 +18,7 @@
 /*----------------------------------------------Sapphire Version-----------------------------------------------------*/
 
 #if ENABLED(V2)
+    #define INVERT_Z_DIR false
     #define X_DRIVER_TYPE  TMC2208_STANDALONE
     #define Y_DRIVER_TYPE  TMC2208_STANDALONE
     #define Z_DRIVER_TYPE  A4988
@@ -30,6 +31,7 @@
 #endif
 
 #if ENABLED(V3)
+    #define INVERT_Z_DIR true
     #define X_DRIVER_TYPE  TMC2208_STANDALONE
     #define Y_DRIVER_TYPE  TMC2208_STANDALONE
     #define Z_DRIVER_TYPE  TMC2208_STANDALONE
