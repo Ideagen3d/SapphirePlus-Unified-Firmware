@@ -13,7 +13,7 @@
 #define BoardName       //  = {Stock}
 #define ABL         //  = {Manual, Inductive, BlTouch}
 #define MeshNumber      // MeshNumber = {3, 5}
-#define UIType          //  {Marlin, ColourUI}
+#define UI          //  {Marlin, ColourUI}
 
 
 /*----------------------------------------------Sapphire Version-----------------------------------------------------*/

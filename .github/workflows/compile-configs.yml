@@ -48,7 +48,7 @@ jobs:
         sed -i "s/#define BoardName.*/#define $BOARD/g" Marlin/Sap.h
         sed -i "s/#define ABL.*/#define $ABL/g" Marlin/Sap.h
         sed -i "s/#define MeshNumber.*/#define MeshNumber $MESH/g" Marlin/Sap.h
-        sed -i "s/#define UIType.*/#define $UI/g" Marlin/Sap.h
+        sed -i "s/#define UI.*/#define $UI/g" Marlin/Sap.h
         pio run
         mkdir temp
         mv .pio/build/mks_robin/*.bin temp/build.bin
