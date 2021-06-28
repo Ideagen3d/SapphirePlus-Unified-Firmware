@@ -9,10 +9,11 @@
 
 #include "Configuration.h"
 
-#define V3   // SapphireType = {V2,V3} Choose between V2(2Endstop),V3(1 Endstop, Flipped Screen)  
-#define Stock   // BoardName = {Stock}
-#define BlTouch   // ABLType = {Manual, Inductive, BlTouch}
-#define Marlin // UIType {Marlin, ColourUI}
+#define SapphireType    //  {V2,V3} Choose between V2(2Endstop),V3(1 Endstop, Flipped Screen)  
+#define BoardName       //  = {Stock}
+#define ABLType         //  = {Manual, Inductive, BlTouch}
+#define MeshNumber      // MeshNumber = {3, 5}
+#define UIType          //  {Marlin, ColourUI}
 
 
 /*----------------------------------------------Sapphire Version-----------------------------------------------------*/
@@ -44,7 +45,9 @@
 
 #if ENABLED(Marlin)
     #define TFT_CLASSIC_UI
-#else 
+#endif
+
+#if ENABLED(ColourUI) 
     #define TFT_COLOR_UI
 #endif
 /*----------------------------------------------Board-----------------------------------------------------*/
