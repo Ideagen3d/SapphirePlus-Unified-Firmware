@@ -55,7 +55,7 @@ jobs:
       env:
         PRINTER: ${{ matrix.printer }}
         BOARD: ${{ matrix.board }}
-        ABLTYPE: ${{ matrix.abltype }}
+        ABLTYPE: ${{ matrix.abl }}
         MESH: ${{ matrix.mesh }}
         UI: ${{ matrix.ui }}
         VERSION: ${{ env.RELEASE_VERSION }}
