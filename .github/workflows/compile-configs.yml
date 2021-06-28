@@ -40,7 +40,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install --upgrade platformio
-    - name: Run PlatformIO BL-Touch
+    - name: Run PlatformIO Build
       id: build_configs
       run: |
         echo "::set-output name=filename::SapphirePLUS-${PRINTER}-${ABLTYPE}-${MESHNUMBER}x${MESHNUMBER}-${BOARD}-${VERSION}.bin"
@@ -58,6 +58,7 @@ jobs:
         ABLTYPE: ${{ matrix.abltype }}
         MESH: ${{ matrix.mesh }}
         UI: ${{ matrix.ui }}
+        VERSION: ${{ env.RELEASE_VERSION }}
     - name: Get release
       id: get_release
       uses: bruceadams/get-release@v1.2.2
