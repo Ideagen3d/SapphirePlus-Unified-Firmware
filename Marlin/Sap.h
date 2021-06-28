@@ -11,7 +11,7 @@
 
 #define SapphireType    //  {V2,V3} Choose between V2(2Endstop),V3(1 Endstop, Flipped Screen)  
 #define BoardName       //  = {Stock}
-#define ABLType         //  = {Manual, Inductive, BlTouch}
+#define ABL         //  = {Manual, Inductive, BlTouch}
 #define MeshNumber      // MeshNumber = {3, 5}
 #define UIType          //  {Marlin, ColourUI}
 
