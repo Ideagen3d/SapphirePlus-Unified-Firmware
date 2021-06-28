@@ -8,7 +8,7 @@ on:
 
 jobs:
   Build-All:
-    name: Build All Configs
+    name: FW
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -18,7 +18,19 @@ jobs:
         mesh: [3,5]
         ui: [Marlin,ColorUI]
     steps:
-   
+    - uses: actions/checkout@v2
+    - name: Cache pip
+      uses: actions/cache@v2
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    - name: Cache PlatformIO
+      uses: actions/cache@v2
+      with:
+        path: ~/.platformio
+        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
     - name: Set up Python
       uses: actions/setup-python@v2
     - name: Install PlatformIO
@@ -43,5 +55,19 @@ jobs:
         ABLTYPE: ${{ matrix.abltype }}
         MESH: ${{ matrix.mesh }}
         UI: ${{ matrix.ui }}
+    - name: Get release
+      id: get_release
+      uses: bruceadams/get-release@v1.2.2
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.get_release.outputs.upload_url }}
+        asset_path: temp/build.bin
+        asset_name: ${{ steps.build_configs.outputs.filename }}
+        asset_content_type: application/x-binary
   
     
