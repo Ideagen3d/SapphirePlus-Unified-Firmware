@@ -16,7 +16,7 @@ jobs:
         board: [Stock]
         abl: [Manual,Inductive,BlTouch]
         mesh: [3,5]
-        ui: [Marlin,ColorUI]
+        ui: [Marlin]
     steps:
     - uses: actions/checkout@v2
     - name: Set env
