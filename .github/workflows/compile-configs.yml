@@ -14,7 +14,7 @@ jobs:
       matrix:
         printer: [V2,V3]
         board: [Stock]
-        abl: [Manual,Inductive,BlTouch]
+        abl: [Inductive,BlTouch]
         mesh: [3,5]
         ui: [Marlin]
     steps:
