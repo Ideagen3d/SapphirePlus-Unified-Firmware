@@ -12,7 +12,7 @@
 #define V3    //  {V2,V3} Choose between V2(2Endstop),V3(1 Endstop, Flipped Screen)  
 #define Stock       //  = {Stock}
 #define BlTouch         //  = {Manual, Inductive, BlTouch}
-#define 5      // MeshNumber = {3, 5}
+#define Meshnumber 5      // MeshNumber = {3, 5}
 #define Marlin          //  {Marlin, ColourUI}
 
 
