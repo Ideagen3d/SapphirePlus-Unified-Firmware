@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        printer: [V2,V3]
+        printer: [V3]
         board: [Stock]
         abl: [Manual]
-        mesh: [3,5]
+        mesh: [5]
         ui: [Marlin]
     steps:
     - uses: actions/checkout@v2
