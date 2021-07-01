@@ -14,7 +14,7 @@ jobs:
       matrix:
         printer: [V2,V3]
         board: [Stock]
-        abl: [Inductive,BlTouch]
+        abl: [Manual,Inductive,BlTouch]
         mesh: [3,5]
         ui: [Marlin]
     steps:
@@ -43,11 +43,12 @@ jobs:
     - name: Run PlatformIO Build
       id: build_configs
       run: |
-        echo "::set-output name=filename::SapphirePLUS-${PRINTER}-${ABL}-${MESHNUMBER}x${MESHNUMBER}-${BOARD}-${VERSION}.bin"
+        echo "::set-output name=filename::SapphirePLUS-${PRINTER}-${ABL}-${MESH}x${MESH}-${BOARD}-${VERSION}.bin"
+        sed -i "s/#define Compiler 1.*/#define Compiler 0/g" Marlin/Sap.h
         sed -i "s/#define SapphireType.*/#define $PRINTER/g" Marlin/Sap.h
         sed -i "s/#define BoardName.*/#define $BOARD/g" Marlin/Sap.h
         sed -i "s/#define ABL.*/#define $ABL/g" Marlin/Sap.h
-        sed -i "s/#define MeshNumber.*/#define MeshNumber $MESH/g" Marlin/Sap.h
+        sed -i "s/#define Grid.*/#define Grid $MESH/g" Marlin/Sap.h
         sed -i "s/#define UI.*/#define $UI/g" Marlin/Sap.h
         pio run
         mkdir temp

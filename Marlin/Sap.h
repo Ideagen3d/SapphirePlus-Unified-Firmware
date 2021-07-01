@@ -8,12 +8,21 @@
 #include <stdint.h>
 
 #include "Configuration.h"
+#define Compiler 1 // {0: Auto,1: Manual} DO NOT CHANGE, auto mode will auto-change for compile when needed
 
-#define V3    //  {V2,V3} Choose between V2(2Endstop),V3(1 Endstop, Flipped Screen)  
-#define Stock       //  = {Stock}
-#define BlTouch         //  = {Manual, Inductive, BlTouch}
-#define Meshnumber 5      // MeshNumber = {3, 5}
-#define Marlin          //  {Marlin, ColourUI}
+#if Compiler == 0
+    #define SapphireType    //  {V2,V3} Choose between V2(2Endstop),V3(1 Endstop, Flipped Screen)  
+    #define BoardName       //  = {Stock}
+    #define ABL         //  = {Manual, Inductive, BlTouch}
+    #define Grid 5      // MeshNumber = {3, 5}
+    #define Marlin          //  {Marlin, ColourUI}
+#elif Compiler == 1 
+    #define V2    //  {V2,V3} Choose between V2(2Endstop),V3(1 Endstop, Flipped Screen)  
+    #define Stock       //  = {Stock}
+    #define Manual         //  = {Manual, Inductive, BlTouch}
+    #define Grid 5      // grid = {3, 5}
+    #define Marlin          //  {Marlin, ColourUI}
+#endif
 
 
 /*----------------------------------------------Sapphire Version-----------------------------------------------------*/
@@ -27,8 +36,9 @@
     #define E0_DRIVER_TYPE TMC2208_STANDALONE
     #if ENABLED(Manual)
         #define Z_MULTI_ENDSTOPS
+    #else 
+        #define Z_STEPPER_AUTO_ALIGN
     #endif
-    #define Z_STEPPER_AUTO_ALIGN
 #endif
 
 #if ENABLED(V3)
@@ -65,6 +75,9 @@
     #define Z_MAX_ENDSTOP_INVERTING true
     #define Z_MIN_PROBE_ENDSTOP_INVERTING true
     #define MESH_BED_LEVELING
+#else 
+    #define G29_RETRY_AND_RECOVER
+    #define G38_PROBE_TARGET
 #endif
 
 #if ENABLED(BlTouch)
@@ -91,6 +104,11 @@
 
     #define MULTIPLE_PROBING 2
     #define EXTRA_PROBING    1
+    #define HOMING_BUMP_MM      { 5, 5, 5 }       // (mm) Backoff from endstops after first bump
+    #define HOMING_BUMP_DIVISOR { 2, 2, 2 }       // Re-Bump Speed Divisor (Divides the Homing Feedrate)
+#else
+    #define HOMING_BUMP_MM      { 5, 5, 2 }       // (mm) Backoff from endstops after first bump
+    #define HOMING_BUMP_DIVISOR { 2, 2, 2 }       // Re-Bump Speed Divisor (Divides the Homing Feedrate)
 #endif
 
 #if ENABLED(Inductive)
