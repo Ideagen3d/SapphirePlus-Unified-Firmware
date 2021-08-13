@@ -17,9 +17,9 @@
     #define Grid 5      // MeshNumber = {3, 5}
     #define Marlin          //  {Marlin, ColourUI}
 #elif Compiler == 1 
-    #define V2    //  {V2,V3} Choose between V2(2Endstop),V3(1 Endstop, Flipped Screen)  
+    #define V3    //  {V2,V3} Choose between V2(2Endstop),V3(1 Endstop, Flipped Screen)  
     #define Stock       //  = {Stock}
-    #define Manual         //  = {Manual, Inductive, BlTouch}
+    #define Inductive         //  = {Manual, Inductive(ideagen), BlTouch}
     #define Grid 5      // grid = {3, 5}
     #define Marlin          //  {Marlin, ColourUI}
 #endif
@@ -28,6 +28,7 @@
 /*----------------------------------------------Sapphire Version-----------------------------------------------------*/
 
 #if ENABLED(V2)
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 410 }
     #define INVERT_Z_DIR false
     #define X_DRIVER_TYPE  TMC2208_STANDALONE
     #define Y_DRIVER_TYPE  TMC2208_STANDALONE
@@ -42,6 +43,7 @@
 #endif
 
 #if ENABLED(V3)
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 800, 410 }
     #define INVERT_Z_DIR true
     #define X_DRIVER_TYPE  TMC2208_STANDALONE
     #define Y_DRIVER_TYPE  TMC2208_STANDALONE
@@ -84,7 +86,7 @@
     #define USE_ZMAX_PLUG
     #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
     #define Z_MIN_ENDSTOP_INVERTING false
-    #define Z_MAX_ENDSTOP_INVERTING false
+    #define Z_MAX_ENDSTOP_INVERTING true
     #define Z_MIN_PROBE_ENDSTOP_INVERTING false
     #define BLTOUCH
     #define AUTO_BED_LEVELING_BILINEAR
@@ -115,7 +117,7 @@
     #define USE_ZMAX_PLUG
     #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
     #define Z_MIN_ENDSTOP_INVERTING false
-    #define Z_MAX_ENDSTOP_INVERTING false
+    #define Z_MAX_ENDSTOP_INVERTING true
     #define Z_MIN_PROBE_ENDSTOP_INVERTING false
     #define FIX_MOUNTED_PROBE
     #define AUTO_BED_LEVELING_BILINEAR
@@ -123,9 +125,9 @@
     #define Z_SAFE_HOMING
     #define BABYSTEP_ZPROBE_OFFSET 
     #define ASSISTED_TRAMMING
-    #define Z_CLEARANCE_DEPLOY_PROBE    0 // Z Clearance for Deploy/Stow
-    #define Z_CLEARANCE_BETWEEN_PROBES  2 // Z Clearance between probe points
-    #define Z_CLEARANCE_MULTI_PROBE     1 // Z Clearance between multiple probes
+    #define Z_CLEARANCE_DEPLOY_PROBE    1 // Z Clearance for Deploy/Stow
+    #define Z_CLEARANCE_BETWEEN_PROBES  3 // Z Clearance between probe points
+    #define Z_CLEARANCE_MULTI_PROBE     0.5 // Z Clearance between multiple probes
     //#define Z_AFTER_PROBING           5 // Z position after probing is done
     #define Z_PROBE_LOW_POINT          -5 // Farthest distance below the trigger-point to go before stopping
 
