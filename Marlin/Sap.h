@@ -43,7 +43,7 @@
 #endif
 
 #if ENABLED(V3)
-    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 800, 410 }
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 410 }
     #define INVERT_Z_DIR true
     #define X_DRIVER_TYPE  TMC2208_STANDALONE
     #define Y_DRIVER_TYPE  TMC2208_STANDALONE
