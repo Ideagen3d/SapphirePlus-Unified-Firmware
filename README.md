@@ -7,6 +7,12 @@
 
 <img align="right" width=175 src="buildroot/share/pixmaps/logo/marlin-250.png" />
 
+This Firmware is maintained for the Sapphire Plus 3D printer. Note to users: Download the appropriate firmware for your printer.
+V2: Non-Belted Dual Z, Dual Endstop
+V3: Belt Synced Dual Z, Single Endstop, Screen orientation Flipped ,Has Service Access Panels
+V4: MKS Robin Nano 1.3 Board (STM32F4) ,Has Service Access Panels
+
+
 Additional documentation can be found at the [Marlin Home Page](https://marlinfw.org/).
 Please test this firmware and let us know if it misbehaves in any way. Volunteers are standing by!
 
