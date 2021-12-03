@@ -11,23 +11,24 @@
 #define Compiler 1 // {0: Auto,1: Manual} DO NOT CHANGE, auto mode will auto-change for compile when needed
 
 #if Compiler == 0
-    #define SapphireType    //  {V2,V3} Choose between V2(2Endstop),V3(1 Endstop, Flipped Screen)  
+    #define SapphireType    //  {V2,V3,V4} Choose between V2(2Endstop),V3(1 Endstop, Flipped Screen) , V4 (STM32F4 Chip)
     #define BoardName       //  = {Stock}
     #define ABL         //  = {Manual, Inductive, BlTouch}
     #define Grid 5      // MeshNumber = {3, 5}
     #define Marlin          //  {Marlin, ColourUI}
 #elif Compiler == 1 
-    #define V3    //  {V2,V3} Choose between V2(2Endstop),V3(1 Endstop, Flipped Screen)  
+    #define V4    //  {V2,V3,V4} Choose between V2(2Endstop),V3(1 Endstop, Flipped Screen) , V4 (STM32F4 Chip)
     #define Stock       //  = {Stock}
     #define Inductive         //  = {Manual, Inductive(ideagen), BlTouch}
     #define Grid 5      // grid = {3, 5}
-    #define Marlin          //  {Marlin, ColourUI}
+    #define ColourUI          //  {Marlin, ColourUI}
 #endif
 
 
 /*----------------------------------------------Sapphire Version-----------------------------------------------------*/
 
 #if ENABLED(V2)
+    #define MOTHERBOARD BOARD_MKS_ROBIN_NANO
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 410 }
     #define INVERT_Z_DIR false
     #define X_DRIVER_TYPE  TMC2208_STANDALONE
@@ -43,6 +44,19 @@
 #endif
 
 #if ENABLED(V3)
+    #define MOTHERBOARD BOARD_MKS_ROBIN_NANO
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 800, 410 }
+    #define INVERT_Z_DIR true
+    #define X_DRIVER_TYPE  TMC2208_STANDALONE
+    #define Y_DRIVER_TYPE  TMC2208_STANDALONE
+    #define Z_DRIVER_TYPE  TMC2208_STANDALONE
+    #define Z2_DRIVER_TYPE TMC2208_STANDALONE
+    #define E0_DRIVER_TYPE TMC2208_STANDALONE
+    #define TFT_ROTATION TFT_ROTATE_180
+#endif
+
+#if ENABLED(V4)
+    #define MOTHERBOARD BOARD_MKS_ROBIN_NANO_V1_3_F4
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 800, 410 }
     #define INVERT_Z_DIR true
     #define X_DRIVER_TYPE  TMC2208_STANDALONE
@@ -64,10 +78,6 @@
 #endif
 /*----------------------------------------------Board-----------------------------------------------------*/
 #if ENABLED(Stock)
-    #define BoardName BOARD_MKS_ROBIN_NANO
-    #define SERIAL_PORT 3
-    #define SERIAL_PORT_2 1
-    #define BAUDRATE 115200
 #endif
 
  /*----------------------------------------------LEVELING-----------------------------------------------------*/
