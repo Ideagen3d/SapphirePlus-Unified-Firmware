@@ -53,6 +53,7 @@ jobs:
         pio run
         mkdir temp
         mv .pio/build/mks_robin_nano35/Robin_nano35.bin temp/
+        mv .pio/build/mks_robin_nano_v1_3_f4/Robin_nano35.bin temp/
       env:
         PRINTER: ${{ matrix.printer }}
         BOARD: ${{ matrix.board }}

@@ -17,7 +17,7 @@
     #define Grid 5      // MeshNumber = {3, 5}
     #define Marlin          //  {Marlin, ColourUI}
 #elif Compiler == 1 
-    #define V4    //  {V2,V3,V4} Choose between V2(2Endstop),V3(1 Endstop, Flipped Screen) , V4 (STM32F4 Chip)
+    #define V2    //  {V2,V3,V4} Choose between V2(2Endstop),V3(1 Endstop, Flipped Screen) , V4 (STM32F4 Chip)
     #define Stock       //  = {Stock}
     #define Manual         //  = {Manual, Inductive(ideagen), BlTouch}
     #define Grid 5      // grid = {3, 5}
