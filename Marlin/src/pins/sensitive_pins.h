@@ -632,7 +632,7 @@
 // Chip Select and Digital Micro-stepping
 //
 
-#if EITHER(DUAL_X_CARRIAGE, X_DUAL_STEPPER_DRIVERS)
+#if HAS_X2_STEPPER
   #if PIN_EXISTS(X2_CS) && AXIS_HAS_SPI(X2)
     #define _X2_CS X2_CS_PIN,
   #else
@@ -882,7 +882,7 @@
 
   // Remove -2 from the front, emit the rest, cease propagation
   template<pin_t ...D>
-  struct OnlyPins<_SP_END, D...> { static constexpr pin_t table[sizeof...(D)] PROGMEM = { D... }; };
+  struct OnlyPins<_SP_END, D...> { static constexpr size_t size = sizeof...(D); static constexpr pin_t table[sizeof...(D)] PROGMEM = { D... }; };
 #endif
 
 #define SENSITIVE_PINS \

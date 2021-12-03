@@ -582,7 +582,6 @@
     #define DEFAULT_Ki_LIST {  0.75,  0.75 }
     #define DEFAULT_Kd_LIST { 49.50, 49.50 }
   #else
-    // Sapphire S/Pro/Plus
     #define DEFAULT_Kp 12.02
     #define DEFAULT_Ki  0.75
     #define DEFAULT_Kd 49.50

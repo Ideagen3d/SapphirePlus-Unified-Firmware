@@ -47,11 +47,10 @@
   #define FLASH_EEPROM_LEVELING
 #endif
 
-// USB Flash Drive support
-#define HAS_OTG_USB_HOST_SUPPORT
+#define HAS_OTG_USB_HOST_SUPPORT                  // USB Flash Drive support
 
 // Avoid conflict with TIMER_TONE
-#define STEP_TIMER                            10
+#define STEP_TIMER 10
 
 //
 // Servos
@@ -134,6 +133,15 @@
 #endif
 
 //
+// Probe enable
+//
+#if ENABLED(PROBE_ENABLE_DISABLE)
+  #ifndef PROBE_ENABLE_PIN
+    #define PROBE_ENABLE_PIN          SERVO0_PIN
+  #endif
+#endif
+
+//
 // Filament Runout Sensor
 //
 #define FIL_RUNOUT_PIN                      PC2   // E0DET
@@ -151,13 +159,6 @@
 //
 #ifndef POWER_LOSS_PIN
   #define POWER_LOSS_PIN                    PC15  // PWRDET
-#endif
-
-//
-// NeoPixel LED
-//
-#ifndef NEOPIXEL_PIN
-  #define NEOPIXEL_PIN                      PE6
 #endif
 
 //
@@ -210,7 +211,7 @@
 #define TEMP_0_PIN                          PA2   // TH0
 #define TEMP_1_PIN                          PA3   // TH1
 
-#if HOTENDS == 1
+#if HOTENDS == 1 && DISABLED(HEATERS_PARALLEL)
   #if TEMP_SENSOR_PROBE
     #define TEMP_PROBE_PIN            TEMP_1_PIN
   #elif TEMP_SENSOR_CHAMBER
@@ -274,23 +275,20 @@
   //#define E3_HARDWARE_SERIAL Serial1
   //#define E4_HARDWARE_SERIAL Serial1
 
-  //
-  // Software serial
-  //
   #define X_SERIAL_TX_PIN                   PE0
-  #define X_SERIAL_RX_PIN                   PE0
+  #define X_SERIAL_RX_PIN        X_SERIAL_TX_PIN
 
   #define Y_SERIAL_TX_PIN                   PD3
-  #define Y_SERIAL_RX_PIN                   PD3
+  #define Y_SERIAL_RX_PIN        Y_SERIAL_TX_PIN
 
   #define Z_SERIAL_TX_PIN                   PD0
-  #define Z_SERIAL_RX_PIN                   PD0
+  #define Z_SERIAL_RX_PIN        Z_SERIAL_TX_PIN
 
   #define E0_SERIAL_TX_PIN                  PC6
-  #define E0_SERIAL_RX_PIN                  PC6
+  #define E0_SERIAL_RX_PIN      E0_SERIAL_TX_PIN
 
   #define E1_SERIAL_TX_PIN                  PD12
-  #define E1_SERIAL_RX_PIN                  PD12
+  #define E1_SERIAL_RX_PIN      E1_SERIAL_TX_PIN
 
   // Reduce baud rate to improve software serial reliability
   #define TMC_BAUD_RATE                    19200
@@ -304,16 +302,15 @@
 #endif
 
 /**
- *               -----                                             -----
- *           NC | 1 2 | GND                                    5V | 1 2 | GND
- *        RESET | 3 4 | PC4 (SD_DETECT)             (LCD_D7) PE13 | 3 4 | PE12 (LCD_D6)
- *   (MOSI) PA7 | 5 6   PB2 (BTN_EN2)               (LCD_D5) PE11 | 5 6   PE10 (LCD_D4)
- *  (SD_SS) PA4 | 7 8 | PE7 (BTN_EN1)               (LCD_RS)  PE9 | 7 8 | PB1  (LCD_EN)
- *    (SCK) PA5 | 9 10| PA6 (MISO)                 (BTN_ENC)  PB0 | 9 10| PC5  (BEEPER)
- *               -----                                             -----
- *               EXP2                                              EXP1
+ *               ------                                             ------
+ *           NC | 1  2 | GND                                    5V | 1  2 | GND
+ *        RESET | 3  4 | PC4 (SD_DETECT)             (LCD_D7) PE13 | 3  4 | PE12 (LCD_D6)
+ *   (MOSI) PA7 | 5  6   PB2 (BTN_EN2)               (LCD_D5) PE11 | 5  6   PE10 (LCD_D4)
+ *  (SD_SS) PA4 | 7  8 | PE7 (BTN_EN1)               (LCD_RS)  PE9 | 7  8 | PB1  (LCD_EN)
+ *    (SCK) PA5 | 9 10 | PA6 (MISO)                 (BTN_ENC)  PB0 | 9 10 | PC5  (BEEPER)
+ *               ------                                             ------
+ *                EXP2                                               EXP1
  */
-
 #define EXP1_03_PIN                         PE13
 #define EXP1_04_PIN                         PE12
 #define EXP1_05_PIN                         PE11
@@ -360,7 +357,7 @@
 #endif
 
 #if ENABLED(BTT_MOTOR_EXPANSION)
-  /**       _____                        _____
+  /**       -----                        -----
    *    NC | . . | GND               NC | . . | GND
    *    NC | . . | M1EN            M2EN | . . | M3EN
    * M1STP | . .   M1DIR           M1RX | . .   M1DIAG
@@ -441,11 +438,6 @@
     #define LCD_PINS_ENABLE          EXP1_03_PIN
     #define LCD_PINS_D4              EXP1_05_PIN
 
-    // CR10_STOCKDISPLAY default timing is too fast
-    #undef BOARD_ST7920_DELAY_1
-    #undef BOARD_ST7920_DELAY_2
-    #undef BOARD_ST7920_DELAY_3
-
   #elif ENABLED(MKS_MINI_12864)
 
     #define DOGLCD_A0                EXP1_04_PIN
@@ -499,16 +491,44 @@
 #endif // HAS_WIRED_LCD
 
 // Alter timing for graphical display
-#if HAS_MARLINUI_U8GLIB
+#if IS_U8GLIB_ST7920
   #ifndef BOARD_ST7920_DELAY_1
-    #define BOARD_ST7920_DELAY_1   DELAY_NS(120)
+    #define BOARD_ST7920_DELAY_1             120
   #endif
   #ifndef BOARD_ST7920_DELAY_2
-    #define BOARD_ST7920_DELAY_2    DELAY_NS(80)
+    #define BOARD_ST7920_DELAY_2              80
   #endif
   #ifndef BOARD_ST7920_DELAY_3
-    #define BOARD_ST7920_DELAY_3   DELAY_NS(580)
+    #define BOARD_ST7920_DELAY_3             580
   #endif
+#endif
+
+#if HAS_SPI_TFT
+  //
+  // e.g., BTT_TFT35_SPI_V1_0 (480x320, 3.5", SPI Stock Display with Rotary Encoder in BIQU B1 SE)
+  //
+  #define TFT_CS_PIN                 EXP2_07_PIN
+  #define TFT_A0_PIN                 EXP2_04_PIN
+  #define TFT_SCK_PIN                EXP2_09_PIN
+  #define TFT_MISO_PIN               EXP2_10_PIN
+  #define TFT_MOSI_PIN               EXP2_05_PIN
+
+  #define TOUCH_INT_PIN              EXP1_04_PIN
+  #define TOUCH_MISO_PIN             EXP1_05_PIN
+  #define TOUCH_MOSI_PIN             EXP1_08_PIN
+  #define TOUCH_SCK_PIN              EXP1_06_PIN
+  #define TOUCH_CS_PIN               EXP1_07_PIN
+
+  #define BTN_EN1                    EXP2_08_PIN
+  #define BTN_EN2                    EXP2_06_PIN
+  #define BTN_ENC                    EXP1_09_PIN
+#endif
+
+//
+// NeoPixel LED
+//
+#ifndef NEOPIXEL_PIN
+  #define NEOPIXEL_PIN                      PE6
 #endif
 
 //
