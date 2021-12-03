@@ -19,7 +19,7 @@
 #elif Compiler == 1 
     #define V4    //  {V2,V3,V4} Choose between V2(2Endstop),V3(1 Endstop, Flipped Screen) , V4 (STM32F4 Chip)
     #define Stock       //  = {Stock}
-    #define Inductive         //  = {Manual, Inductive(ideagen), BlTouch}
+    #define Manual         //  = {Manual, Inductive(ideagen), BlTouch}
     #define Grid 5      // grid = {3, 5}
     #define ColourUI          //  {Marlin, ColourUI}
 #endif
@@ -57,7 +57,7 @@
 
 #if ENABLED(V4)
     #define MOTHERBOARD BOARD_MKS_ROBIN_NANO_V1_3_F4
-    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 800, 410 }
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 410 }
     #define INVERT_Z_DIR true
     #define X_DRIVER_TYPE  TMC2208_STANDALONE
     #define Y_DRIVER_TYPE  TMC2208_STANDALONE
