@@ -1,4 +1,4 @@
-name: Build Configs
+name: Build Configs v4
 
 on:
   release:
