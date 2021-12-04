@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  Build-V2,V3:
+  Build-V2V3:
     name: FW
     runs-on: ubuntu-latest
     strategy:
