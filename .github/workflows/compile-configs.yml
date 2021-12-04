@@ -50,6 +50,7 @@ jobs:
         sed -i "s/#define ABL.*/#define $ABL/g" Marlin/Sap.h
         sed -i "s/#define Grid.*/#define Grid $MESH/g" Marlin/Sap.h
         sed -i "s/#define UI.*/#define $UI/g" Marlin/Sap.h
+        sed -i "s/mks_robin_nano_v1_3_f4.*/mks_robin_nano35/g" platformio.ini
         pio run
         mkdir temp
         mv .pio/build/mks_robin_nano35/Robin_nano35.bin temp/
