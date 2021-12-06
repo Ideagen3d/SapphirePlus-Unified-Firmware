@@ -43,7 +43,7 @@ jobs:
     - name: Run PlatformIO Build
       id: build_configs
       run: |
-        echo "::set-output name=filename::SapphirePLUS-${PRINTER}-${ABL}-${MESH}x${MESH}-${BOARD}-${VERSION}.bin"
+        echo "::set-output name=filename::SapphirePLUS-${PRINTER}-${ABL}-${MESH}x${MESH}-${BOARD}-${VERSION}-${UI}.bin"
         sed -i "s/#define Compiler 1.*/#define Compiler 0/g" Marlin/Sap.h
         sed -i "s/#define SapphireType.*/#define $PRINTER/g" Marlin/Sap.h
         sed -i "s/#define BoardName.*/#define $BOARD/g" Marlin/Sap.h
