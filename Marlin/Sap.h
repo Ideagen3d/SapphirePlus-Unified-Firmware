@@ -17,7 +17,7 @@
     #define Grid 5      // MeshNumber = {3, 5}
     #define UI          //  {Marlin, ColourUI}
 #elif Compiler == 1 
-    #define V2    //  {V2,V3,V4} Choose between V2(2Endstop),V3(1 Endstop, Flipped Screen) , V4 (STM32F4 Chip)
+    #define V4    //  {V2,V3,V4} Choose between V2(2Endstop),V3(1 Endstop, Flipped Screen) , V4 (STM32F4 Chip)
     #define Stock       //  = {Stock}
     #define Manual         //  = {Manual, Inductive(ideagen), BlTouch}
     #define Grid 5      // grid = {3, 5}
@@ -114,7 +114,7 @@
     #define Z_PROBE_OFFSET_RANGE_MIN -20
     #define Z_PROBE_OFFSET_RANGE_MAX 20
 
-    #define MULTIPLE_PROBING 2
+    #define MULTIPLE_PROBING 1
     #define EXTRA_PROBING    1
     #define HOMING_BUMP_MM      { 5, 5, 5 }       // (mm) Backoff from endstops after first bump
     #define HOMING_BUMP_DIVISOR { 2, 2, 2 }       // Re-Bump Speed Divisor (Divides the Homing Feedrate)
