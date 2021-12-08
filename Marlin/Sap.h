@@ -114,8 +114,8 @@
     #define Z_PROBE_OFFSET_RANGE_MIN -20
     #define Z_PROBE_OFFSET_RANGE_MAX 20
 
-    #define MULTIPLE_PROBING 1
-    #define EXTRA_PROBING    1
+    #define MULTIPLE_PROBING 2
+    //#define EXTRA_PROBING    1
     #define HOMING_BUMP_MM      { 5, 5, 5 }       // (mm) Backoff from endstops after first bump
     #define HOMING_BUMP_DIVISOR { 2, 2, 2 }       // Re-Bump Speed Divisor (Divides the Homing Feedrate)
 #else
