@@ -14,7 +14,7 @@
     #define SapphireType    //  {V2,V3,V4} Choose between V2(2Endstop),V3(1 Endstop, Flipped Screen) , V4 (STM32F4 Chip)
     #define BoardName       //  = {Stock}
     #define ABL         //  = {Manual, Inductive, BlTouch}
-    #define Grid 5      // MeshNumber = {3, 5}
+    #define MeshNumber      // MeshNumber = {3, 5}
     #define UI          //  {Marlin, ColourUI}
 #elif Compiler == 1 
     #define V4    //  {V2,V3,V4} Choose between V2(2Endstop),V3(1 Endstop, Flipped Screen) , V4 (STM32F4 Chip)
