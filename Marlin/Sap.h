@@ -17,11 +17,11 @@
     #define MeshNumber      // MeshNumber = {3, 5}
     #define UI          //  {Marlin, ColourUI}
 #elif Compiler == 1 
-    #define V4    //  {V2,V3,V4,VL} Choose between V2(2Endstop),V3(1 Endstop, Flipped Screen) , V4 (STM32F4 Chip), VL(Test Build/DONT USE(Ballscrew, Flipped Screen, Experimental Extruder))
+    #define VL    //  {V2,V3,V4,VL} Choose between V2(2Endstop),V3(1 Endstop, Flipped Screen) , V4 (STM32F4 Chip), VL(Test Build/DONT USE(Ballscrew, Flipped Screen, Experimental Extruder))
     #define Stock       //  = {Stock}
-    #define Manual         //  = {Manual, Inductive(ideagen), BlTouch}
+    #define Inductive         //  = {Manual, Inductive(ideagen), BlTouch}
     #define MeshNumber 5      // MeshNumber = {3, 5}
-    #define ColourUI          //  {Marlin, ColourUI}
+    #define Marlin          //  {Marlin, ColourUI}
 #endif
 
 
