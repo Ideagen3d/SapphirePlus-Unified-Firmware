@@ -17,7 +17,7 @@
     #define MeshNumber      // MeshNumber = {3, 5}
     #define UI          //  {Marlin, ColourUI}
 #elif Compiler == 1 
-    #define V4    //  {V2,V3,V4} Choose between V2(2Endstop),V3(1 Endstop, Flipped Screen) , V4 (STM32F4 Chip)
+    #define V4    //  {V2,V3,V4,VL} Choose between V2(2Endstop),V3(1 Endstop, Flipped Screen) , V4 (STM32F4 Chip), VL(Test Build/DONT USE(Ballscrew, Flipped Screen, Experimental Extruder))
     #define Stock       //  = {Stock}
     #define Manual         //  = {Manual, Inductive(ideagen), BlTouch}
     #define Grid 5      // grid = {3, 5}
@@ -26,6 +26,18 @@
 
 
 /*----------------------------------------------Sapphire Version-----------------------------------------------------*/
+
+#if ENABLED(VL)
+    #define MOTHERBOARD BOARD_MKS_ROBIN_NANO
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 800, 260 }
+    #define INVERT_Z_DIR true
+    #define X_DRIVER_TYPE  TMC2208_STANDALONE
+    #define Y_DRIVER_TYPE  TMC2208_STANDALONE
+    #define Z_DRIVER_TYPE  TMC2208_STANDALONE
+    #define Z2_DRIVER_TYPE TMC2208_STANDALONE
+    #define E0_DRIVER_TYPE TMC2208_STANDALONE
+    #define TFT_ROTATION TFT_ROTATE_180
+#endif
 
 #if ENABLED(V2)
     #define MOTHERBOARD BOARD_MKS_ROBIN_NANO
