@@ -29,17 +29,22 @@
 
 #if ENABLED(VL)
     #define MOTHERBOARD BOARD_MKS_ROBIN_NANO
-    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 800, 260 }
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 800, 284 }
     #define INVERT_Z_DIR true
     #define X_DRIVER_TYPE  TMC2208_STANDALONE
     #define Y_DRIVER_TYPE  TMC2208_STANDALONE
     #define Z_DRIVER_TYPE  TMC2208_STANDALONE
     #define Z2_DRIVER_TYPE TMC2208_STANDALONE
     #define E0_DRIVER_TYPE TMC2208_STANDALONE
-    #define TFT_ROTATION TFT_ROTATE_180
+    #define USE_PROBE_FOR_Z_HOMING
+    #define INVERT_X_DIR false
+    #define INVERT_Y_DIR false
+    #define Z_STEPPER_AUTO_ALIGN
 #endif
 
 #if ENABLED(V2)
+    #define INVERT_X_DIR true
+    #define INVERT_Y_DIR true
     #define MOTHERBOARD BOARD_MKS_ROBIN_NANO
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 410 }
     #define INVERT_Z_DIR false
@@ -56,6 +61,8 @@
 #endif
 
 #if ENABLED(V3)
+    #define INVERT_X_DIR true
+    #define INVERT_Y_DIR true
     #define MOTHERBOARD BOARD_MKS_ROBIN_NANO
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 800, 410 }
     #define INVERT_Z_DIR true
@@ -68,6 +75,8 @@
 #endif
 
 #if ENABLED(V4)
+    #define INVERT_X_DIR true
+    #define INVERT_Y_DIR true
     #define MOTHERBOARD BOARD_MKS_ROBIN_NANO_V1_3_F4
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 410 }
     #define INVERT_Z_DIR true
