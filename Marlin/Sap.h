@@ -109,8 +109,10 @@
     #define Z_MIN_PROBE_ENDSTOP_INVERTING true
     #define MESH_BED_LEVELING
 #else 
+    #define LEVEL_CORNERS_USE_PROBE
     #define G29_RETRY_AND_RECOVER
     #define G38_PROBE_TARGET
+    #define Z_PROBE_END_SCRIPT "M500"
 #endif
 
 #if ENABLED(BlTouch)
@@ -155,7 +157,6 @@
     #define LEVEL_CORNERS_USE_PROBE
     #define Z_SAFE_HOMING
     #define BABYSTEP_ZPROBE_OFFSET 
-    #define ASSISTED_TRAMMING
     #define Z_CLEARANCE_DEPLOY_PROBE    1 // Z Clearance for Deploy/Stow
     #define Z_CLEARANCE_BETWEEN_PROBES  3 // Z Clearance between probe points
     #define Z_CLEARANCE_MULTI_PROBE     0.5 // Z Clearance between multiple probes
