@@ -92,7 +92,6 @@
 
 #if ENABLED(Marlin)
     #define TFT_CLASSIC_UI
-    #define BABYSTEP_ZPROBE_GFX_OVERLAY
 #endif
 
 #if ENABLED(ColourUI) 
@@ -114,6 +113,7 @@
     #define G29_RETRY_AND_RECOVER
     #define G38_PROBE_TARGET
     #define Z_PROBE_END_SCRIPT "M500"
+    #define BABYSTEP_ZPROBE_GFX_OVERLAY
 #endif
 
 #if ENABLED(BlTouch)
