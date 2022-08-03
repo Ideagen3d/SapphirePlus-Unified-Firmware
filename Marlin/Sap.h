@@ -92,6 +92,7 @@
 
 #if ENABLED(Marlin)
     #define TFT_CLASSIC_UI
+    #define BABYSTEP_ZPROBE_GFX_OVERLAY
 #endif
 
 #if ENABLED(ColourUI) 
