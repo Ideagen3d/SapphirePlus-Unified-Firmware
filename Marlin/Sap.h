@@ -8,7 +8,7 @@
 #include <stdint.h>
 
 #include "Configuration.h"
-#define Compiler 0 // {0: Auto,1: Manual} DO NOT CHANGE, auto mode will auto-change for compile when needed
+#define Compiler 1 // {0: Auto,1: Manual} DO NOT CHANGE, auto mode will auto-change for compile when needed
 
 #if Compiler == 0
     #define SapphireType    //  {V2,V3,V4} Choose between V2(2Endstop),V3(1 Endstop, Flipped Screen) , V4 (STM32F4 Chip)
@@ -113,7 +113,9 @@
     #define G29_RETRY_AND_RECOVER
     #define G38_PROBE_TARGET
     #define Z_PROBE_END_SCRIPT "M500"
-    #define BABYSTEP_ZPROBE_GFX_OVERLAY
+    #if DISABLED(ColourUI)
+        #define BABYSTEP_ZPROBE_GFX_OVERLAY
+    #endif     
 #endif
 
 #if ENABLED(BlTouch)
