@@ -48,7 +48,7 @@ jobs:
         sed -i "s/#define SapphireType.*/#define $PRINTER/g" Marlin/Sap.h
         sed -i "s/#define BoardName.*/#define $BOARD/g" Marlin/Sap.h
         sed -i "s/#define ABL.*/#define $ABL/g" Marlin/Sap.h
-        sed -i "s/MNX.*/$MESH/g" Marlin/Sap.h
+        sed -i "s/#define MeshNumber 0.*/#define MeshNumber $MESH/g" Marlin/Sap.h
         sed -i "s/#define UI.*/#define $UI/g" Marlin/Sap.h
         pio run
         mkdir temp
@@ -115,7 +115,7 @@ jobs:
         sed -i "s/#define SapphireType.*/#define $PRINTER/g" Marlin/Sap.h
         sed -i "s/#define BoardName.*/#define $BOARD/g" Marlin/Sap.h
         sed -i "s/#define ABL.*/#define $ABL/g" Marlin/Sap.h
-        sed -i "s/MNX.*/$MESH/g" Marlin/Sap.h
+        sed -i "s/#define MeshNumber 0.*/#define MeshNumber $MESH/g" Marlin/Sap.h
         sed -i "s/#define UI.*/#define $UI/g" Marlin/Sap.h
         sed -i "s/mks_robin_nano35.*/mks_robin_nano_v1_3_f4/g" platformio.ini
         pio run
@@ -183,7 +183,7 @@ jobs:
         sed -i "s/#define SapphireType.*/#define $PRINTER/g" Marlin/Sap.h
         sed -i "s/#define BoardName.*/#define $BOARD/g" Marlin/Sap.h
         sed -i "s/#define ABL.*/#define $ABL/g" Marlin/Sap.h
-        sed -i "s/MNX.*/$MESH/g" Marlin/Sap.h
+        sed -i "s/#define MeshNumber 0.*/#define MeshNumber $MESH/g" Marlin/Sap.h
         sed -i "s/#define UI.*/#define $UI/g" Marlin/Sap.h
         pio run
         mkdir temp
