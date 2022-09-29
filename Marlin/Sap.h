@@ -16,12 +16,14 @@
     #define ABL         //  = {Manual, Inductive, BlTouch}
     #define MeshNumber 0     // Meshnumber = {3, 5}
     #define UI          //  {Marlin, ColourUI}
+    #define AltFan 0        // {1: Heatsink Fan wired to Heater 1 on stock Board, 0:Default Always On Heatsink Fan}
 #elif Compiler == 1 
     #define VL    //  {V2,V3,V4,VL} Choose between V2(2Endstop),V3(1 Endstop, Flipped Screen) , V4 (STM32F4 Chip), VL(Test Build/DONT USE(Ballscrew, Flipped Screen, Experimental Extruder))
     #define Stock       //  = {Stock}
     #define Inductive         //  = {Manual, Inductive(ideagen), BlTouch}
-    #define MeshNumber 3      // Meshnumber = {3, 5}
+    #define MeshNumber 5      // Meshnumber = {3, 5}
     #define Marlin          //  {Marlin, ColourUI}
+    #define AltFan 1        // {1: Heatsink Fan wired to Heater 1 on stock Board, 0:Default Always On Heatsink Fan}
 #endif
 
 
@@ -101,6 +103,10 @@
 #if ENABLED(Stock)
 #endif
 
+#if ENABLED(AltFan)
+    #define E0_AUTO_FAN_PIN 16
+    
+#endif
  /*----------------------------------------------LEVELING-----------------------------------------------------*/
 
 #if ENABLED(Manual)

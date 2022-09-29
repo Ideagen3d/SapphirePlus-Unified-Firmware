@@ -17,6 +17,7 @@ jobs:
         abl: [Manual,Inductive,BlTouch]
         mesh: [3,5]
         ui: [Marlin,ColourUI]
+        altfan: [0,1]
     steps:
     - uses: actions/checkout@v2
     - name: Set env
@@ -43,13 +44,14 @@ jobs:
     - name: Run PlatformIO Build
       id: build_configs
       run: |
-        echo "::set-output name=filename::SapphirePLUS-${PRINTER}-${ABL}-${MESH}x${MESH}-${BOARD}-${VERSION}-${UI}.bin"
+        echo "::set-output name=filename::SapphirePLUS-${PRINTER}-${ABL}-${MESH}x${MESH}-${BOARD}-${VERSION}-${UI}-${ALTFAN}.bin"
         sed -i "s/#define Compiler 1.*/#define Compiler 0/g" Marlin/Sap.h
         sed -i "s/#define SapphireType.*/#define $PRINTER/g" Marlin/Sap.h
         sed -i "s/#define BoardName.*/#define $BOARD/g" Marlin/Sap.h
         sed -i "s/#define ABL.*/#define $ABL/g" Marlin/Sap.h
         sed -i "s/#define MeshNumber 0.*/#define MeshNumber $MESH/g" Marlin/Sap.h
         sed -i "s/#define UI.*/#define $UI/g" Marlin/Sap.h
+        sed -i "s/#define AltFan 0.*/#define AltFan $ALTFAN/g" Marlin/Sap.h
         pio run
         mkdir temp
         mv .pio/build/mks_robin_nano35/Robin_nano35.bin temp/
@@ -59,6 +61,7 @@ jobs:
         ABL: ${{ matrix.abl }}
         MESH: ${{ matrix.mesh }}
         UI: ${{ matrix.ui }}
+        ALTFAN: ${{ matrix.altfan }}
         VERSION: ${{ env.RELEASE_VERSION }}
     - name: Get release
       id: get_release
@@ -84,6 +87,7 @@ jobs:
         abl: [Manual,Inductive,BlTouch]
         mesh: [3,5]
         ui: [Marlin,ColourUI]
+        altfan: [0,1]
     steps:
     - uses: actions/checkout@v2
     - name: Set env
@@ -110,13 +114,14 @@ jobs:
     - name: Run PlatformIO Build
       id: build_configs
       run: |
-        echo "::set-output name=filename::SapphirePLUS-${PRINTER}-${ABL}-${MESH}x${MESH}-${BOARD}-${VERSION}-${UI}.bin"
+        echo "::set-output name=filename::SapphirePLUS-${PRINTER}-${ABL}-${MESH}x${MESH}-${BOARD}-${VERSION}-${UI}-${ALTFAN}.bin"
         sed -i "s/#define Compiler 1.*/#define Compiler 0/g" Marlin/Sap.h
         sed -i "s/#define SapphireType.*/#define $PRINTER/g" Marlin/Sap.h
         sed -i "s/#define BoardName.*/#define $BOARD/g" Marlin/Sap.h
         sed -i "s/#define ABL.*/#define $ABL/g" Marlin/Sap.h
         sed -i "s/#define MeshNumber 0.*/#define MeshNumber $MESH/g" Marlin/Sap.h
         sed -i "s/#define UI.*/#define $UI/g" Marlin/Sap.h
+        sed -i "s/#define AltFan 0.*/#define AltFan $ALTFAN/g" Marlin/Sap.h
         sed -i "s/mks_robin_nano35.*/mks_robin_nano_v1_3_f4/g" platformio.ini
         pio run
         mkdir temp
@@ -127,6 +132,7 @@ jobs:
         ABL: ${{ matrix.abl }}
         MESH: ${{ matrix.mesh }}
         UI: ${{ matrix.ui }}
+        ALTFAN: ${{ matrix.altfan }}
         VERSION: ${{ env.RELEASE_VERSION }}
     - name: Get release
       id: get_release
@@ -152,6 +158,7 @@ jobs:
         abl: [Inductive]
         mesh: [3,5]
         ui: [Marlin,ColourUI]
+        altfan: [0,1]
     steps:
     - uses: actions/checkout@v2
     - name: Set env
@@ -178,13 +185,14 @@ jobs:
     - name: Run PlatformIO Build
       id: build_configs
       run: |
-        echo "::set-output name=filename::SapphirePLUS-${PRINTER}-${ABL}-${MESH}x${MESH}-${BOARD}-${VERSION}-${UI}.bin"
+        echo "::set-output name=filename::SapphirePLUS-${PRINTER}-${ABL}-${MESH}x${MESH}-${BOARD}-${VERSION}-${UI}-${ALTFAN}.bin"
         sed -i "s/#define Compiler 1.*/#define Compiler 0/g" Marlin/Sap.h
         sed -i "s/#define SapphireType.*/#define $PRINTER/g" Marlin/Sap.h
         sed -i "s/#define BoardName.*/#define $BOARD/g" Marlin/Sap.h
         sed -i "s/#define ABL.*/#define $ABL/g" Marlin/Sap.h
         sed -i "s/#define MeshNumber 0.*/#define MeshNumber $MESH/g" Marlin/Sap.h
         sed -i "s/#define UI.*/#define $UI/g" Marlin/Sap.h
+        sed -i "s/#define AltFan 0.*/#define AltFan $ALTFAN/g" Marlin/Sap.h
         pio run
         mkdir temp
         mv .pio/build/mks_robin_nano35/Robin_nano35.bin temp/
@@ -194,6 +202,7 @@ jobs:
         ABL: ${{ matrix.abl }}
         MESH: ${{ matrix.mesh }}
         UI: ${{ matrix.ui }}
+        ALTFAN: ${{ matrix.altfan }}
         VERSION: ${{ env.RELEASE_VERSION }}
     - name: Get release
       id: get_release
